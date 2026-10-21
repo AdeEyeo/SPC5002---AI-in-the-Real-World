@@ -18,7 +18,7 @@ ifeq (,$(shell command -v $(PY) 2>/dev/null))
   endif
 endif
 
-.PHONY: help setup test clean verify run ingest profile check agree
+.PHONY: help setup test clean verify run ingest profile check agree clean-data leak-lab
 
 help:
 	@echo "make run          run the Week 1 script, write outputs/metrics.json"
@@ -26,9 +26,11 @@ help:
 	@echo "make profile      profile both datasets, write outputs/profile.json"
 	@echo "make check        run your constraints, write outputs/violations.csv"
 	@echo "make agree        code the ten comments on your own, in silence"
+	@echo "make clean-data   run your cleaning, write outputs/orders_clean.csv and the ledger"
+	@echo "make leak-lab     clean, then the two Week 4 measurements, write outputs/leak_lab.json"
 	@echo ""
 	@echo "make test         run every contract test in the repository"
-	@echo "make verify       run profile and check twice and compare the outputs"
+	@echo "make verify       run cleaning and the leak lab twice and compare the outputs"
 	@echo "make clean        delete outputs and caches"
 
 setup:
@@ -57,22 +59,16 @@ check:
 agree:
 	$(PY) src/agreement.py
 
-# the one that matters. It runs this week's two scripts twice, hashes the two
-# files they write, and exits non-zero when the two runs differ: a check you
-# cannot fail is not a check.
-OUTS := outputs/profile.json outputs/violations.csv
+clean-data:
+	$(PY) src/cleaning.py
 
+# the leak lab reads the cleaned table, so it cleans first
+leak-lab: clean-data
+	$(PY) src/leak_lab.py
+
+# the one that matters. It runs this week's two scripts twice, hashes the three
+# files they write, and exits non-zero when the two runs differ: a check you
+# cannot fail is not a check. The work is in src/verify.py, which is supplied, so
+# that Windows, where make is usually missing, can run python src/verify.py.
 verify:
-	@$(PY) src/profile.py > /dev/null && $(PY) src/constraints.py > /dev/null
-	@A=$$(shasum -a 256 $(OUTS) 2>/dev/null || sha256sum $(OUTS)); \
-	 $(PY) src/profile.py > /dev/null && $(PY) src/constraints.py > /dev/null || exit 1; \
-	 B=$$(shasum -a 256 $(OUTS) 2>/dev/null || sha256sum $(OUTS)); \
-	 echo "$$A"; echo "$$B"; \
-	 if [ "$$A" = "$$B" ]; then \
-	   echo "the two runs match"; \
-	 else \
-	   echo "THE TWO RUNS DIFFER. Something in your code is not seeded,"; \
-	   echo "or depends on the order a set or dict happened to be in,"; \
-	   echo "or writes the time it ran."; \
-	   exit 1; \
-	 fi
+	@$(PY) src/verify.py
