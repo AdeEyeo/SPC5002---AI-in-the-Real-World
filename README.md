@@ -5,6 +5,23 @@
 > to add a *Running this* section; from Week 2 each week's brief arrives as
 > `docs/weekNN_brief.md` instead, so your own writing survives the term.
 
+## Running this
+
+    git clone "https://github.qmul.ac.uk/ap25098/SPC5002-AI-in-the-Real-World.git" coldclone
+    cd coldclone
+    python -m venv .venv
+    .venv/Scripts/activate
+    pip install -r requirements.txt      # "make setup"
+    python src/run.py                    # "make run"
+    python src/ingest.py                 # "make ingest"
+    python src/profile.py                # "make profile"
+    python src/constraints.py            # "make constraints"
+    python src/leak_lab.py               # "make leak-lab"
+    python src/cleaning.py               # "make clean-data"
+    python src/features.py               # "make features"
+    python src/encoding_lab.py           # "make encoding-lab"
+    python -m pytest -q                  # "make test"
+
 AI in the Real World. The repository you build this week is the one you add to
 every week until May, and it is half the marks for this module.
 

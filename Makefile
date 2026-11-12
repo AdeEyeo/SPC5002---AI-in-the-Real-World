@@ -18,7 +18,7 @@ ifeq (,$(shell command -v $(PY) 2>/dev/null))
   endif
 endif
 
-.PHONY: help setup test clean verify run ingest profile check agree clean-data leak-lab features encoding-lab
+.PHONY: help setup test clean verify run ingest profile check agree clean-data leak-lab features encoding-lab imbalance
 
 help:
 	@echo "make run          run the Week 1 script, write outputs/metrics.json"
@@ -30,9 +30,10 @@ help:
 	@echo "make leak-lab     clean, then the two Week 4 measurements, write outputs/leak_lab.json"
 	@echo "make features     fit the feature pipeline, score it with and without dates, write outputs/features.json"
 	@echo "make encoding-lab three encodings of the customer, random and grouped, write outputs/encoding_lab.json"
+	@echo "make imbalance    baselines, class weights and the matching threshold, write outputs/imbalance.json"
 	@echo ""
 	@echo "make test         run every contract test in the repository"
-	@echo "make verify       run the features and the encoding lab twice and compare the outputs"
+	@echo "make verify       run the imbalance script twice and compare the outputs"
 	@echo "make clean        delete outputs and caches"
 
 setup:
@@ -74,8 +75,11 @@ features:
 encoding-lab:
 	$(PY) src/encoding_lab.py
 
-# the one that matters. It runs this week's two scripts twice, hashes the two
-# files they write, and exits non-zero when the two runs differ: a check you
+imbalance:
+	$(PY) src/imbalance.py
+
+# the one that matters. It runs this week's script twice, hashes the file it
+# writes, and exits non-zero when the two runs differ: a check you
 # cannot fail is not a check. The work is in src/verify.py, which is supplied, so
 # that Windows, where make is usually missing, can run python src/verify.py.
 verify:

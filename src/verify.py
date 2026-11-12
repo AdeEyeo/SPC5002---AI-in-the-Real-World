@@ -4,7 +4,7 @@ src/verify.py
 Supplied, not yours to write. It is what make verify runs, written in Python so
 that it also runs on Windows, where make is usually missing.
 
-It runs this week's two scripts twice, hashes the two files they write, prints
+It runs this week's script twice, hashes the file it writes, prints
 both sets of hashes, and exits with an error when the two runs differ, because a
 check you cannot fail is not a check.
 
@@ -17,8 +17,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SCRIPTS = ["src/features.py", "src/encoding_lab.py"]
-OUTPUTS = ["outputs/features.json", "outputs/encoding_lab.json"]
+SCRIPTS = ["src/imbalance.py"]
+OUTPUTS = ["outputs/imbalance.json"]
 
 
 def run_once():

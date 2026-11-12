@@ -161,26 +161,31 @@ def mark_non_positive_prices(df, led):
 
 
 def correct_negative_order_values(df, led):
-    """Correct the sign of a negative order value, unless the order was returned. Called in clean.
+    """Correct the sign of every negative order value, returned or not. Called in clean.
 
     Refunds are recorded by the returned flag, not by the value. In all four negative
     orders the magnitude matches price x quantity x (1 - discount) to the penny, so a
     sign error fits all four, and the value is the one field the data supports
-    independently. A refund could explain an order that was returned, so that one is
-    left as it is and flagged as ambiguous until the order system's owner says which
+    independently. The returned one is corrected too, for two reasons. A cleaning
+    rule must not depend on the label: leaving only the returned order negative
+    would make a negative value mean returned, and put the answer into a feature.
+    And even if its -34.97 were a refund written later, the order was worth +34.97
+    when it was placed, which is the moment the model predicts at. It stays flagged
+    as ambiguous, so the doubt is recorded until the order system's owner says which
     fields it calculates. Chosen over drop_negative_order_values because the repair
     is checked by three other columns.
     """
     out = df.copy()
     negative = out["order_value"] < 0
-    flip = negative & ~out["returned"].astype(bool)
+    flip = negative
     ambiguous = negative & out["returned"].astype(bool)
     out["order_value"] = out["order_value"].where(~flip, -out["order_value"])
     out["order_value_sign_corrected"] = _carry_flag(df, "order_value_sign_corrected", flip)
     out["order_value_ambiguous"] = _carry_flag(df, "order_value_ambiguous", ambiguous)
     led.record("correct_negative_order_values", len(df), len(out),
-               f"corrected the sign on {int(flip.sum())} orders; flagged "
-               f"{int(ambiguous.sum())} returned order(s) as ambiguous and left the value")
+               f"corrected the sign on {int(flip.sum())} orders; "
+               f"{int(ambiguous.sum())} of them returned, corrected too and "
+               "flagged as ambiguous")
     return out
 
 
