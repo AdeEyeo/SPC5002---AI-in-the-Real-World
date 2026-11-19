@@ -1,6 +1,6 @@
-# Needs Python 3.11 or newer.
-# Pinned on purpose. == not >=. Week 10 explains why in detail; for now, take it
-# that a version range is a promise you cannot keep.
+# The packages below need Python 3.11 or newer and are pinned exactly with ==,
+# because a version range is a promise that you cannot keep, which Week 10
+# explains in detail.
 pandas==3.0.2
 numpy==2.4.4
 scikit-learn==1.8.0

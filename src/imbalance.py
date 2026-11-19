@@ -32,8 +32,8 @@ RULE = "flag every footwear or apparel order"
 
 def baselines(orders):
     """Two predictions that need no model, as columns of 0 and 1."""
-    majority = None   # TODO, a 0 for every order
-    rule = None   # TODO, your one-line rule as 0 and 1, the one RULE describes
+    majority = np.zeros(len(orders), dtype=int)   # TODO, a 0 for every order
+    rule = orders["category"].isin(["footwear", "apparel"]).astype(int)   # TODO, your one-line rule as 0 and 1, the one RULE describes
     return majority, rule
 
 
@@ -42,7 +42,7 @@ def oof_proba(model, X, y):
     runs = []
     for seed in range(5):
         cv = StratifiedKFold(5, shuffle=True, random_state=seed)
-        p = None   # TODO, as on Thursday, cross_val_predict and column 1
+        p = cross_val_predict(model, X, y, cv=cv, method="predict_proba")[:, 1]   # TODO, as on Thursday, cross_val_predict and column 1
         if p is None:
             sys.exit("Fill in the TODO line in oof_proba() first.")
         runs.append(p)
@@ -52,7 +52,7 @@ def oof_proba(model, X, y):
 def matching_threshold(proba, y, target):
     """The highest threshold at which proba finds at least target of the returns."""
     for t in np.arange(0.5, 0, -0.001):
-        pred = None   # TODO, True where proba is at least t
+        pred = proba >= t   # TODO, True where proba is at least t
         if pred is None:
             sys.exit("Fill in the TODO line in matching_threshold() first.")
         if recall_score(y, pred) >= target:

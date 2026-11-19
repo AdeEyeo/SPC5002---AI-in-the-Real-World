@@ -1,24 +1,25 @@
-# SPC5002. One Makefile, and it grows with the repository.
+# SPC5002 has one Makefile, and it grows with the repository because each week's
+# zip replaces it with a longer version of itself.
 #
-# Each week's zip replaces this file with a longer version of itself. Every
-# target you have ever been given still works, which is the point: the Week 12
-# check clones your repository and runs `make setup && make run`, and `make run`
-# was a Week 1 target.
+# Every target you have ever been given still works, and this matters because
+# the Week 12 check clones your repository and runs `make setup && make run`,
+# where `make run` was a Week 1 target.
 #
-# If you cannot say what a target does, ask on the Friday.
+# If you cannot say what a target does, ask a demonstrator in the Friday lab.
 
 PY := python
 
-# `python` only exists once the virtual environment is activated. Without this
-# check, make prints "python: No such file or directory", which does not tell
-# you that the fix is `source .venv/bin/activate`.
+# The command `python` exists only once the virtual environment is activated, and
+# the check below falls back to `python3` when it is missing, since otherwise make
+# prints "python: No such file or directory", which does not tell you that the
+# fix is `source .venv/bin/activate`.
 ifeq (,$(shell command -v $(PY) 2>/dev/null))
   ifneq (,$(shell command -v python3 2>/dev/null))
     PY := python3
   endif
 endif
 
-.PHONY: help setup test clean verify run ingest profile check agree clean-data leak-lab features encoding-lab imbalance
+.PHONY: help setup test clean verify run ingest profile check agree clean-data leak-lab features encoding-lab imbalance evaluate
 
 help:
 	@echo "make run          run the Week 1 script, write outputs/metrics.json"
@@ -31,9 +32,10 @@ help:
 	@echo "make features     fit the feature pipeline, score it with and without dates, write outputs/features.json"
 	@echo "make encoding-lab three encodings of the customer, random and grouped, write outputs/encoding_lab.json"
 	@echo "make imbalance    baselines, class weights and the matching threshold, write outputs/imbalance.json"
+	@echo "make evaluate     your pipeline, two alternatives and your rule on the same 25 folds, write outputs/evaluation.json"
 	@echo ""
 	@echo "make test         run every contract test in the repository"
-	@echo "make verify       run the imbalance script twice and compare the outputs"
+	@echo "make verify       run the evaluation script twice and compare the outputs"
 	@echo "make clean        delete outputs and caches"
 
 setup:
@@ -65,7 +67,8 @@ agree:
 clean-data:
 	$(PY) src/cleaning.py
 
-# the leak lab reads the cleaned table, so it cleans first
+# The leak lab reads the cleaned table, so this target runs the cleaning step
+# before it starts the lab.
 leak-lab: clean-data
 	$(PY) src/leak_lab.py
 
@@ -78,9 +81,13 @@ encoding-lab:
 imbalance:
 	$(PY) src/imbalance.py
 
-# the one that matters. It runs this week's script twice, hashes the file it
-# writes, and exits non-zero when the two runs differ: a check you
-# cannot fail is not a check. The work is in src/verify.py, which is supplied, so
-# that Windows, where make is usually missing, can run python src/verify.py.
+evaluate:
+	$(PY) src/evaluate.py
+
+# This is the target that matters. It runs this week's script twice, hashes the
+# files it writes and exits non-zero when the two runs differ, because a check
+# that cannot fail is not a check. The work is done in src/verify.py, which is
+# supplied so that Windows, where make is usually missing, can run
+# python src/verify.py.
 verify:
 	@$(PY) src/verify.py

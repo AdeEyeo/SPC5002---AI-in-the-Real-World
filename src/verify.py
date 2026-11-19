@@ -1,12 +1,13 @@
 """
 src/verify.py
 
-Supplied, not yours to write. It is what make verify runs, written in Python so
-that it also runs on Windows, where make is usually missing.
+This script is supplied and is not yours to write. It is what make verify runs,
+and it is written in Python so that it also runs on Windows, where make is
+usually missing.
 
-It runs this week's script twice, hashes the file it writes, prints
-both sets of hashes, and exits with an error when the two runs differ, because a
-check you cannot fail is not a check.
+It runs this week's script twice, hashes the files it writes, prints both sets
+of hashes and exits with an error when the two runs differ, because a check that
+cannot fail is not a check.
 
     python src/verify.py
 """
@@ -17,8 +18,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SCRIPTS = ["src/imbalance.py"]
-OUTPUTS = ["outputs/imbalance.json"]
+SCRIPTS = ["src/evaluate.py"]
+OUTPUTS = ["outputs/evaluation.json", "outputs/evaluation_folds.csv"]
 
 
 def run_once():

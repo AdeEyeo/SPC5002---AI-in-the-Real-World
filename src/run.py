@@ -5,7 +5,6 @@ ROOT = Path(__file__).resolve().parents[1] # the repo, from the file
 DATA = ROOT / "data" / "retail_orders_week1.csv"
 OUT = ROOT / "outputs"
 def evaluate(df):
-    ... # <-- your notebook logic
     import pandas as pd
     import numpy as np
     from sklearn.linear_model import LogisticRegression
@@ -13,13 +12,11 @@ def evaluate(df):
     from sklearn.metrics import roc_auc_score
     from sklearn.preprocessing import StandardScaler
 
-    # record the raw dataset before any filtering (slide 15 expects 2,030 rows)
     n_rows = len(df)
     n_columns = df.shape[1]
     n_returns = df['returned'].sum()
     base_rate = df['returned'].mean()
 
-    # drop the rows that look wrong, and put VAT on the order value
     df = df[df['quantity'] > 0]
     df = df[df['delivery_days'] > 0]
     df = df.assign(order_value_incl_vat=df['order_value'] * 1.2)
