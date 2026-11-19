@@ -1,0 +1,66 @@
+{
+  "features": [
+    "item_price",
+    "discount_pct",
+    "customer_prior_orders",
+    "channel",
+    "category",
+    "payment_method"
+  ],
+  "outliers_removed_before_the_split": {
+    "flattering": 0.6264,
+    "flattering_higher_in": 40,
+    "flattering_sd": 0.0239,
+    "flattering_test_rows": 486.8,
+    "gap": 0.00684,
+    "gap_from_test_set": 0.00679,
+    "gap_from_test_set_sd": 0.00331,
+    "gap_sd": 0.00324,
+    "honest": 0.6196,
+    "honest_on_cleaned_test": 0.6264,
+    "honest_on_cleaned_test_sd": 0.0238,
+    "honest_sd": 0.0225,
+    "honest_test_rows": 498.0
+  },
+  "rows": 1992,
+  "rows_left_out_blank_feature": 4,
+  "scaler_fitted_on_everything": {
+    "1000": {
+      "fitted_on_all": 0.6106,
+      "fitted_on_train": 0.6106,
+      "gap": 0.0,
+      "gap_sd": 0.00026
+    },
+    "1494": {
+      "fitted_on_all": 0.6191,
+      "fitted_on_train": 0.6191,
+      "gap": -0.0,
+      "gap_sd": 0.00018
+    },
+    "200": {
+      "fitted_on_all": 0.5775,
+      "fitted_on_train": 0.5774,
+      "gap": 3e-05,
+      "gap_sd": 0.00025
+    },
+    "40": {
+      "fitted_on_all": 0.5454,
+      "fitted_on_train": 0.5454,
+      "gap": 2e-05,
+      "gap_sd": 0.00219
+    },
+    "500": {
+      "fitted_on_all": 0.5995,
+      "fitted_on_train": 0.5994,
+      "gap": 0.00012,
+      "gap_sd": 0.00021
+    },
+    "80": {
+      "fitted_on_all": 0.5456,
+      "fitted_on_train": 0.5455,
+      "gap": 6e-05,
+      "gap_sd": 0.00091
+    }
+  },
+  "seeds": 40
+}

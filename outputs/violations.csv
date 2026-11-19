@@ -1,0 +1,30 @@
+dataset,row_id,rule,reason
+orders,ORD-100182,delivery 0 to 60 days,A delivery cannot arrive before it is sent or take two months.
+orders,ORD-100250,delivery 0 to 60 days,A delivery cannot arrive before it is sent or take two months.
+orders,ORD-100729,delivery 0 to 60 days,A delivery cannot arrive before it is sent or take two months.
+orders,ORD-101124,delivery 0 to 60 days,A delivery cannot arrive before it is sent or take two months.
+orders,ORD-101568,delivery 0 to 60 days,A delivery cannot arrive before it is sent or take two months.
+orders,ORD-100320,item_price > 0,The shop does not give stock away at a listed price of zero.
+orders,ORD-100438,item_price > 0,The shop does not give stock away at a listed price of zero.
+orders,ORD-100647,item_price > 0,The shop does not give stock away at a listed price of zero.
+orders,ORD-101191,item_price > 0,The shop does not give stock away at a listed price of zero.
+orders,ORD-100234,order_value >= 0,A sale cannot have negative value; refunds are the returned flag.
+orders,ORD-100378,order_value >= 0,A sale cannot have negative value; refunds are the returned flag.
+orders,ORD-101594,order_value >= 0,A sale cannot have negative value; refunds are the returned flag.
+orders,ORD-101872,order_value >= 0,A sale cannot have negative value; refunds are the returned flag.
+orders,ORD-100443,quantity >= 1,An order for nothing is not an order.
+orders,ORD-101741,quantity >= 1,An order for nothing is not an order.
+orders,ORD-101808,quantity >= 1,An order for nothing is not an order.
+orders,ORD-101913,quantity >= 1,An order for nothing is not an order.
+orders,ORD-100234,value = price x qty x (1 - discount),"order_value is derived from the other three, rounded to the penny."
+orders,ORD-100320,value = price x qty x (1 - discount),"order_value is derived from the other three, rounded to the penny."
+orders,ORD-100378,value = price x qty x (1 - discount),"order_value is derived from the other three, rounded to the penny."
+orders,ORD-100438,value = price x qty x (1 - discount),"order_value is derived from the other three, rounded to the penny."
+orders,ORD-100443,value = price x qty x (1 - discount),"order_value is derived from the other three, rounded to the penny."
+orders,ORD-100647,value = price x qty x (1 - discount),"order_value is derived from the other three, rounded to the penny."
+orders,ORD-101191,value = price x qty x (1 - discount),"order_value is derived from the other three, rounded to the penny."
+orders,ORD-101594,value = price x qty x (1 - discount),"order_value is derived from the other three, rounded to the penny."
+orders,ORD-101741,value = price x qty x (1 - discount),"order_value is derived from the other three, rounded to the penny."
+orders,ORD-101808,value = price x qty x (1 - discount),"order_value is derived from the other three, rounded to the penny."
+orders,ORD-101872,value = price x qty x (1 - discount),"order_value is derived from the other three, rounded to the penny."
+orders,ORD-101913,value = price x qty x (1 - discount),"order_value is derived from the other three, rounded to the penny."

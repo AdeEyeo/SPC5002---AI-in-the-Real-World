@@ -1,0 +1,353 @@
+{
+  "orders": {
+    "columns": 16,
+    "profile": {
+      "category": {
+        "constant": false,
+        "distinct": 6,
+        "missing": 0,
+        "top": {
+          "apparel": 636,
+          "electronics": 320,
+          "home": 387
+        },
+        "type": "str"
+      },
+      "channel": {
+        "constant": false,
+        "distinct": 2,
+        "missing": 0,
+        "top": {
+          "phone": 96,
+          "web": 1900
+        },
+        "type": "str"
+      },
+      "customer_id": {
+        "constant": false,
+        "distinct": 907,
+        "missing": 0,
+        "range": [
+          10000,
+          11060
+        ],
+        "type": "int64"
+      },
+      "customer_prior_orders": {
+        "constant": false,
+        "distinct": 9,
+        "missing": 0,
+        "range": [
+          0,
+          8
+        ],
+        "type": "int64"
+      },
+      "customer_region": {
+        "constant": false,
+        "distinct": 7,
+        "missing": 34,
+        "top": {
+          "London": 502,
+          "North": 338,
+          "South": 417
+        },
+        "type": "str"
+      },
+      "customer_tenure_days": {
+        "constant": false,
+        "distinct": 737,
+        "missing": 34,
+        "range": [
+          21.0,
+          2398.0
+        ],
+        "type": "float64"
+      },
+      "delivery_days": {
+        "constant": false,
+        "distinct": 15,
+        "missing": 0,
+        "range": [
+          -999,
+          14
+        ],
+        "type": "int64"
+      },
+      "discount_pct": {
+        "constant": false,
+        "distinct": 8,
+        "missing": 0,
+        "range": [
+          0,
+          40
+        ],
+        "type": "int64"
+      },
+      "item_price": {
+        "constant": false,
+        "distinct": 1829,
+        "missing": 0,
+        "range": [
+          0.0,
+          418.83
+        ],
+        "type": "float64"
+      },
+      "marketing_opt_in": {
+        "constant": false,
+        "distinct": 2,
+        "missing": 77,
+        "top": {
+          "False": 836,
+          "True": 1083
+        },
+        "type": "object"
+      },
+      "order_date": {
+        "constant": false,
+        "distinct": 362,
+        "missing": 0,
+        "top": {
+          "2025-01-28": 12,
+          "2025-05-01": 14,
+          "2025-12-22": 14
+        },
+        "type": "str"
+      },
+      "order_id": {
+        "constant": false,
+        "distinct": 1996,
+        "missing": 0,
+        "top": {
+          "ORD-100000": 1,
+          "ORD-100001": 1,
+          "ORD-100002": 1
+        },
+        "type": "str"
+      },
+      "order_value": {
+        "constant": false,
+        "distinct": 1872,
+        "missing": 0,
+        "range": [
+          -138.34,
+          1190.24
+        ],
+        "type": "float64"
+      },
+      "payment_method": {
+        "constant": false,
+        "distinct": 4,
+        "missing": 0,
+        "top": {
+          "bnpl": 234,
+          "card": 1270,
+          "paypal": 369
+        },
+        "type": "str"
+      },
+      "quantity": {
+        "constant": false,
+        "distinct": 5,
+        "missing": 0,
+        "range": [
+          0,
+          4
+        ],
+        "type": "int64"
+      },
+      "returned": {
+        "constant": false,
+        "distinct": 2,
+        "missing": 0,
+        "range": [
+          0,
+          1
+        ],
+        "type": "int64"
+      }
+    },
+    "rows": 1996
+  },
+  "penguins": {
+    "columns": 17,
+    "profile": {
+      "Body Mass (g)": {
+        "constant": false,
+        "distinct": 94,
+        "missing": 2,
+        "range": [
+          2700.0,
+          6300.0
+        ],
+        "type": "float64"
+      },
+      "Clutch Completion": {
+        "constant": false,
+        "distinct": 2,
+        "missing": 0,
+        "top": {
+          "No": 36,
+          "Yes": 308
+        },
+        "type": "str"
+      },
+      "Comments": {
+        "constant": false,
+        "distinct": 10,
+        "missing": 290,
+        "top": {
+          "Nest never observed with full clutch.": 34,
+          "Not enough blood for isotopes.": 7,
+          "Sexing primers did not amplify.": 4
+        },
+        "type": "str"
+      },
+      "Culmen Depth (mm)": {
+        "constant": false,
+        "distinct": 80,
+        "missing": 2,
+        "range": [
+          13.1,
+          21.5
+        ],
+        "type": "float64"
+      },
+      "Culmen Length (mm)": {
+        "constant": false,
+        "distinct": 164,
+        "missing": 2,
+        "range": [
+          32.1,
+          59.6
+        ],
+        "type": "float64"
+      },
+      "Date Egg": {
+        "constant": false,
+        "distinct": 50,
+        "missing": 0,
+        "top": {
+          "2007-11-16": 16,
+          "2007-11-27": 18,
+          "2008-11-09": 16
+        },
+        "type": "str"
+      },
+      "Delta 13 C (o/oo)": {
+        "constant": false,
+        "distinct": 331,
+        "missing": 13,
+        "range": [
+          -27.01854,
+          -23.78767
+        ],
+        "type": "float64"
+      },
+      "Delta 15 N (o/oo)": {
+        "constant": false,
+        "distinct": 330,
+        "missing": 14,
+        "range": [
+          7.6322,
+          10.02544
+        ],
+        "type": "float64"
+      },
+      "Flipper Length (mm)": {
+        "constant": false,
+        "distinct": 55,
+        "missing": 2,
+        "range": [
+          172.0,
+          231.0
+        ],
+        "type": "float64"
+      },
+      "Individual ID": {
+        "constant": false,
+        "distinct": 190,
+        "missing": 0,
+        "top": {
+          "N13A1": 3,
+          "N13A2": 3,
+          "N18A1": 3
+        },
+        "type": "str"
+      },
+      "Island": {
+        "constant": false,
+        "distinct": 3,
+        "missing": 0,
+        "top": {
+          "Biscoe": 168,
+          "Dream": 124,
+          "Torgersen": 52
+        },
+        "type": "str"
+      },
+      "Region": {
+        "constant": true,
+        "distinct": 1,
+        "missing": 0,
+        "top": {
+          "Anvers": 344
+        },
+        "type": "str"
+      },
+      "Sample Number": {
+        "constant": false,
+        "distinct": 152,
+        "missing": 0,
+        "range": [
+          1,
+          152
+        ],
+        "type": "int64"
+      },
+      "Sex": {
+        "constant": false,
+        "distinct": 2,
+        "missing": 11,
+        "top": {
+          "FEMALE": 165,
+          "MALE": 168
+        },
+        "type": "str"
+      },
+      "Species": {
+        "constant": false,
+        "distinct": 3,
+        "missing": 0,
+        "top": {
+          "Adelie Penguin (Pygoscelis adeliae)": 152,
+          "Chinstrap penguin (Pygoscelis antarctica)": 68,
+          "Gentoo penguin (Pygoscelis papua)": 124
+        },
+        "type": "str"
+      },
+      "Stage": {
+        "constant": true,
+        "distinct": 1,
+        "missing": 0,
+        "top": {
+          "Adult, 1 Egg Stage": 344
+        },
+        "type": "str"
+      },
+      "studyName": {
+        "constant": false,
+        "distinct": 3,
+        "missing": 0,
+        "top": {
+          "PAL0708": 110,
+          "PAL0809": 114,
+          "PAL0910": 120
+        },
+        "type": "str"
+      }
+    },
+    "rows": 344
+  }
+}

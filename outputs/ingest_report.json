@@ -1,0 +1,28 @@
+{
+  "crm": {
+    "customers": 1061,
+    "customers_twice": 27,
+    "decision": "kept neither CRM row for customers with two; their orders have blank CRM fields",
+    "orders_of_customers_twice": 34,
+    "rows": 1088
+  },
+  "join": {
+    "rows": 1996
+  },
+  "orders": {
+    "rows": 1996
+  },
+  "phone": {
+    "rows": 96
+  },
+  "web": {
+    "rows": 1900
+  },
+  "week1_comparison": {
+    "columns_compared": 16,
+    "columns_matching": 15,
+    "differing": {
+      "marketing_opt_in": 46
+    }
+  }
+}

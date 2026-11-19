@@ -1,0 +1,31 @@
+{
+  "orders": 1996,
+  "columns_in": [
+    "item_price",
+    "discount_pct",
+    "customer_prior_orders",
+    "delivery_days",
+    "order_value",
+    "quantity",
+    "channel",
+    "category",
+    "payment_method",
+    "customer_region",
+    "customer_id",
+    "day_of_week",
+    "month",
+    "day_of_month",
+    "is_weekend",
+    "week_of_year",
+    "days_since_2025"
+  ],
+  "features_out": 26,
+  "auc_without_date_features": {
+    "mean": 0.6201,
+    "sd": 0.0347
+  },
+  "auc_with_date_features": {
+    "mean": 0.6122,
+    "sd": 0.0376
+  }
+}

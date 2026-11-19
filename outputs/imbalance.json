@@ -1,0 +1,72 @@
+{
+  "orders": 1996,
+  "base_rate": 0.1914,
+  "baselines": {
+    "majority": {
+      "accuracy": 0.8086,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "flagged": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 382,
+      "tn": 1614
+    },
+    "rule": {
+      "description": "flag every footwear or apparel order",
+      "accuracy": 0.5832,
+      "precision": 0.2549,
+      "recall": 0.6126,
+      "f1": 0.36,
+      "flagged": 918,
+      "tp": 234,
+      "fp": 684,
+      "fn": 148,
+      "tn": 930
+    }
+  },
+  "unadjusted": {
+    "roc_auc": 0.619,
+    "pr_auc": 0.2504,
+    "highest_probability": 0.5736,
+    "at_0.5": {
+      "accuracy": 0.8076,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "flagged": 2,
+      "tp": 0,
+      "fp": 2,
+      "fn": 382,
+      "tn": 1612
+    }
+  },
+  "class_weight_balanced": {
+    "roc_auc": 0.6186,
+    "pr_auc": 0.2511,
+    "at_0.5": {
+      "accuracy": 0.5626,
+      "precision": 0.2567,
+      "recall": 0.678,
+      "f1": 0.3724,
+      "flagged": 1009,
+      "tp": 259,
+      "fp": 750,
+      "fn": 123,
+      "tn": 864
+    }
+  },
+  "matching_threshold": {
+    "threshold": 0.194,
+    "accuracy": 0.5661,
+    "precision": 0.2585,
+    "recall": 0.678,
+    "f1": 0.3743,
+    "flagged": 1002,
+    "tp": 259,
+    "fp": 743,
+    "fn": 123,
+    "tn": 871
+  }
+}

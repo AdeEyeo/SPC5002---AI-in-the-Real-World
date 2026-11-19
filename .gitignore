@@ -1,8 +1,8 @@
 # Outputs are produced by code, so they do not count as source and stay out of
 # the repository.
-outputs/
-*.png
-*.pdf
+#outputs/
+#*.png
+#*.pdf
 
 # environments
 .venv/

@@ -1,0 +1,5 @@
+step,before,after,removed,reason
+mark_impossible_quantities,1996,1996,0,"set 4 zero quantities to missing and flagged them; ORD-100443 implies 2, ORD-101741 implies 2, ORD-101808 implies 2, ORD-101913 implies 1"
+mark_non_positive_prices,1996,1996,0,"set 4 non-positive prices to missing and flagged them; ORD-100320 implies 39.60, ORD-100438 implies 9.28, ORD-100647 implies 62.26, ORD-101191 implies 106.12"
+correct_negative_order_values,1996,1996,0,"corrected the sign on 4 orders; 1 of them returned, corrected too and flagged as ambiguous"
+mark_sentinel_delivery_times,1996,1996,0,"kept and flagged 5 orders, where -999 means not recorded"

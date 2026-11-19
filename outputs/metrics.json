@@ -1,0 +1,38 @@
+{
+  "base_rate": 0.1926,
+  "coefficients": {
+    "customer_prior_orders": -0.019,
+    "delivery_days": 0.0214,
+    "discount_pct": 0.0482,
+    "item_price": 0.0343,
+    "quantity": 0.0623
+  },
+  "features": [
+    "item_price",
+    "discount_pct",
+    "quantity",
+    "delivery_days",
+    "customer_prior_orders"
+  ],
+  "n_columns": 17,
+  "n_returns": 391,
+  "n_rows": 2030,
+  "n_rows_after_filter": 2021,
+  "provenance": {
+    "data_sha256": "dd0caefae80c6529",
+    "pandas": "3.0.2",
+    "python": "3.12.12",
+    "scikit_learn": "1.8.0"
+  },
+  "return_rate_by_category": {
+    "apparel": 0.2385,
+    "beauty": 0.0792,
+    "electronics": 0.2038,
+    "footwear": 0.2927,
+    "home": 0.112,
+    "sports": 0.1294
+  },
+  "roc_auc": 0.587,
+  "sample_return_rate": 0.1975,
+  "seed": 7
+}

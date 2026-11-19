@@ -1,0 +1,61 @@
+{
+  "scores": {
+    "one_hot_only": {
+      "random_split": {
+        "mean": 0.6201,
+        "sd": 0.0347
+      },
+      "grouped_by_customer": {
+        "mean": 0.6144,
+        "sd": 0.0294
+      }
+    },
+    "target_encoded_in_the_pipeline": {
+      "random_split": {
+        "mean": 0.6225,
+        "sd": 0.0341
+      },
+      "grouped_by_customer": {
+        "mean": 0.6147,
+        "sd": 0.0294
+      }
+    },
+    "customer_rate_on_every_order": {
+      "random_split": {
+        "mean": 0.9326,
+        "sd": 0.0102
+      },
+      "grouped_by_customer": {
+        "mean": 0.9335,
+        "sd": 0.015
+      }
+    }
+  },
+  "correlation_with_own_label": {
+    "group_mean_on_every_order": 0.688,
+    "target_encoder_fit_then_transform": 0.6802,
+    "target_encoder_fit_transform": 0.063
+  },
+  "rows_per_level": {
+    "channel": {
+      "values": 2,
+      "orders_per_value": 998.0
+    },
+    "category": {
+      "values": 6,
+      "orders_per_value": 332.7
+    },
+    "payment_method": {
+      "values": 4,
+      "orders_per_value": 499.0
+    },
+    "customer_region": {
+      "values": 7,
+      "orders_per_value": 285.1
+    },
+    "customer_id": {
+      "values": 907,
+      "orders_per_value": 2.2
+    }
+  }
+}
