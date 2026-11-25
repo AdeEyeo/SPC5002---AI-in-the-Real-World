@@ -28,10 +28,15 @@ My pipeline and its class-weighted version rank best, and are almost identical. 
 
 ## 3. Which differences are findings
 
-<!-- Set each alternative against your pipeline through the mean difference, its
-     sd and the wins out of 25, and say which of the differences you would call
-     a finding and why. The folds share training orders, so the comparison is
-     evidence but no statistical test, which needs saying once. -->
+To see which changes helped, each alternative was compared with my pipeline on the same fold. The comparison uses the ROC-AUC difference, alternative minus pipeline, so a positive number means the alternative is better. A fold that is hard for one model tends to be hard for all of them. Comparing fold by fold removes that shared difficulty, which comparing two overlapping means would not.
+
+The decision tree is lower than my pipeline by 0.0412 on average, with an sd of 0.0243, and is higher in only 2 of the 25 folds. The difference is about 1.7 times its sd and goes the same way in 23 folds, so I call it a finding: replacing the logistic regression with a depth-4 tree makes the ranking worse.
+
+The rule is lower than my pipeline by 0.0258, sd 0.0194, and is higher in 4 of 25 folds. My pipeline beats my own one-line rule in 21 of 25 folds. That difference is larger than its sd, but only by about a third, so I call it a finding, a modest one. Ten columns and a fitted model buy about 0.026 of ROC-AUC over a rule anyone can apply by hand.
+
+Class weight balanced differs from my pipeline by −0.0006, sd 0.0028, and is higher in 11 of 25 folds, about half. The difference is a fifth of its sd, so it is not a finding: weighting the returns does not change how the pipeline ranks orders. That fits Week 6, where its use was to move the cut-off, not to improve the ranking.
+
+The 25 folds are built from the same 1,996 orders, so their training sets overlap and the folds are not independent. The sds and win counts are therefore evidence, not a statistical test, and I quote no p-values.
 
 ## 4. A number from an earlier week, reported again
 
