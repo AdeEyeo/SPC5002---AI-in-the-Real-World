@@ -67,7 +67,7 @@ def folds(y):
     """The 25 folds every candidate meets, 5 stratified folds shuffled 5 times."""
     out = []
     for seed in SEEDS:
-        cv = StratifiedKFold(5, shuffle=True, random_state=0)   # FIX, shuffle with seed
+        cv = StratifiedKFold(5, shuffle=True, random_state=seed)   # FIX, shuffle with seed
         for k, (train, test) in enumerate(cv.split(np.zeros(len(y)), y)):
             out.append((seed, k, train, test))
     return out
@@ -79,7 +79,7 @@ def fold_rows(orders, X, y):
     models = candidates()
     rows = []
     for seed, k, train, test in folds(y):
-        floor = None   # TODO, the share of returned orders in this test fold
+        floor = y[test].mean()   # TODO, the share of returned orders in this test fold
         if floor is None:
             sys.exit("Fill in the TODO line for floor in fold_rows() first.")
         scores = {"the rule": rule[test]}
@@ -111,8 +111,8 @@ def paired(rows, against="your pipeline"):
         if name == against:
             continue
         a, b = wide[name].to_numpy(), wide[against].to_numpy()   # 25 scores each
-        diffs = None   # TODO, fold by fold, this candidate minus your pipeline
-        wins = None   # TODO, in how many folds this candidate is higher
+        diffs = a - b   # TODO, fold by fold, this candidate minus your pipeline
+        wins = int((diffs > 0).sum())   # TODO, in how many folds this candidate is higher
         if diffs is None or wins is None:
             sys.exit("Fill in the two TODO lines in paired() first.")
         if np.ndim(wins) != 0:
