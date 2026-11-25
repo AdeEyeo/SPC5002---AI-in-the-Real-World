@@ -20,6 +20,8 @@
     python src/cleaning.py               # "make clean-data"
     python src/features.py               # "make features"
     python src/encoding_lab.py           # "make encoding-lab"
+    python src/imbalance.py              # "make imbalance"
+    python src/evaluate.py               # "make evaluate"
     python -m pytest -q                  # "make test"
 
 AI in the Real World. The repository you build this week is the one you add to
