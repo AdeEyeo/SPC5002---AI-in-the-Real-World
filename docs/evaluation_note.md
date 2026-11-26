@@ -50,5 +50,8 @@ My conclusion changes. In Milestone 2 the operating point read as the model beat
 
 ## 5. What this evaluation cannot tell you
 
-<!-- Name at least one thing that this evaluation cannot tell you and explain
-     why the folds you used are unable to show it. -->
+It cannot say how the model would do on next year's orders. The folds are drawn at random from one year of orders, so every test fold sits among training orders from the same months. If customers, prices or the product mix change, the scores above could fall, and only a split in time, training on earlier orders and testing on later ones, would show it.
+
+It says little about customers the model has never seen. Customers place about 2.2 orders each, and random folds put most of them on both sides of the split. When I kept each customer's orders on one side in Week 5, the score dropped slightly, from 0.6199 to 0.6142 (docs/feature_notes.md). That was within the sd, but this evaluation does not test it.
+
+The scores are for a model that is allowed a slightly late view. I kept delivery_days, which is not known at checkout, so that my scores line up with the lab's (docs/milestone2_preprocessing.md). A model used at checkout could not have it, so these numbers are likely a little higher than such a model would score.
