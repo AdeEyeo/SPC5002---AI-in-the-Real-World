@@ -40,9 +40,13 @@ The 25 folds are built from the same 1,996 orders, so their training sets overla
 
 ## 4. A number from an earlier week, reported again
 
-<!-- Report again, the Week 8 way, one number that you reported before from a
-     single split or without a spread, and say whether your conclusion
-     changes. -->
+In Milestone 2 I chose an operating point, a threshold of 0.194 on the model's probability of a return. I reported it as a precision of 0.259 and a recall of 0.678, one number each with no spread, from out-of-fold probabilities averaged over five shuffles. The threshold was also picked on those same probabilities.
+
+Reported again on the 25 folds above, with the model refitted in each fold and the same threshold applied to its test orders, the precision is 0.2562 (sd 0.0218) and the recall 0.6590 (sd 0.0612). Across folds the precision ranges from 0.20 to 0.29. The rule, in the same folds, has a precision of 0.2551 (sd 0.0185) and a recall of 0.6126 (sd 0.0514).
+
+Fold by fold, the model's precision is higher than the rule's by only 0.0011, sd 0.0129, in 12 of 25 folds: no difference. Its recall is higher by 0.0465, sd 0.0443, in 21 of 25 folds. That is just larger than its sd, but the model also flags more orders than the rule (197 against 184 per fold on average), and flagging more raises recall on its own.
+
+My conclusion changes. In Milestone 2 the operating point read as the model beating the rule. Measured properly, at this cut-off the model is exactly as precise as "flag every footwear or apparel order" and finds slightly more returns by flagging slightly more orders. The model's real advantage is the one section 3 shows: it ranks, so the cut-off can move, while the rule is one fixed point.
 
 ## 5. What this evaluation cannot tell you
 
