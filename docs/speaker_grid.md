@@ -123,15 +123,45 @@ I'm not sure. The part I found most interesting was building the AI agents, but 
 
 ## Week 9
 
-Speaker and organisation
+Speaker: Akshata Sawant - Developer Advocate (previously MuleSoft integration developer; author)
+Organisation: Salesforce
 
 1. What is your field?
+
+CRM / enterprise SaaS, agentic AI, integration (MuleSoft), developer relations / technical marketing
+
 2. How do you use machine learning?
+
+LLM-powered AI agents (Agentforce) for customer service, sales, IT/HR help, Slack onboarding. Agents built from natural-language prompts. Claude Code with Salesforce skills for development. LLM outputs (probabilistic) combined with core-system business rules (deterministic), e.g. the LLM says "18% discount would be competitive" but the core system says "your maximum is 15%".
+
 3. What data do you use, and how do you clean it?
+
+Customer CRM data and metadata: objects, fields, relationships, rules, permissions, business logic, security, analytics (250 petabytes of customer data and metadata). Data comes from many sources (e.g. Amazon, legacy banking data warehouses). Demo data was restaurant records: cuisine, rating, address, phone, menu.
+
+Data 360 (Informatica, MuleSoft, Tableau, Metadata Platform) integrates and harmonises data from different systems into a single source of truth, then cleans and transforms it, because agents hallucinate on poor data. Salesforce Guardian masks PII before anything goes to external LLMs (Anthropic, OpenAI, Google, etc.), with zero data retention. No detailed cleaning methods were given.
+
 4. What does your pipeline look like?
+
+Platform: Many data sources -> Data 360 (integration, federation, harmonisation) -> Customer 360 apps and workflows (Sales, Service, Marketing, etc.) -> Agentforce agents -> AIforce interfaces (Claudeforce, Slackforce, Coworker, Headless Toolkit) -> user
+All LLM calls go through Salesforce Guardian -> external LLM -> back to the agent
+
+Agent: user prompt -> agent router -> subagent (e.g. General FAQ, Find An Expert In Slack, Ambiguous Question, Off Topic) -> actions -> response card
+
+Agent development life cycle: describe agent in a prompt -> edit agent script, model, knowledge base (RAG) -> preview -> save / commit version -> deploy -> new version
+
 5. How do you check your results, and change what you do?
+
+Agents are tested in the builder's Preview, refined with the Agent Optimizer, and saved as new versions before deploying again. Evals were mentioned as part of the agent life cycle, but no specific metrics were given. Deterministic data and rules from core systems override probabilistic answers. Weaker models need more detailed prompts to avoid hallucinating.
+
+Results are measured as business outcomes, e.g. Heathrow 90% of queries resolved by its agent, PenFed 75% of IT requests resolved autonomously, Southwest 7x return on investment, CVS calls 12% shorter, F1 50% faster service responses. Continuous training, regression and security are also handled behind the scenes.
+
 6. Who do you have to explain all this to?
+
+Enterprise customers (e.g. McLaren F1, FedEx, Heathrow, KPMG, Pearson), including customers hesitant to take agents into production; product managers and engineers at Salesforce; the developer community (YouTube, livestreams, Trailblazer Community on Slack, Dreamforce, TDX); interviewers, who expect candidates to justify AI-built solutions; students and universities
+
 7. Could I see myself doing this work, and why?
+
+Yes, I lean towards seeing myself in this field, either designing tools that help people create agents or building agents for companies. The direction the talk pointed towards matches how I've always imagined AI: building software to improve people's lives. What attracts me is creating something with my own hands, and software is easier and cheaper to make than a physical product. Seeing Salesforce skills and plugins in Claude Code build an agent was exciting, because it would help people without a coding background. It also showed me that agents aren't rocket science. I'd rather work alongside AI than try to match it at writing code. Still, I agree I need the fundamentals and enough code to understand what it builds and to write concise prompts. Her point that the workload has increased rather than decreased opened my view. Part of me is put off by it, but I know that reaction shouldn't stop me, and I'm excited to see how far technology goes in my lifetime. That said, I wouldn't choose a customer-facing role like Forward Deployed Engineer. I don't enjoy dealing with unfamiliar people or convincing stubborn ones. I'll keep improving my communication, but I'd avoid jobs that put it first. I also find the CRM data side boring, because I'm indecisive and dislike making assumptions when pre-processing data.
 
 ## Week 12
 
